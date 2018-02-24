@@ -6,6 +6,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 	<typeAlias alias="role" type="com.gethin.po.Role"/>
 	</typeAliases>
+	<typeHandlers>
+	 <typeHandler jdbcType="VARCHAR" javaType="string" handler="com.gethin.handler.MyStringHandler"/>
+	</typeHandlers>
 	<!-- 定义数据库的信息，默认使用development数据库构建环境 -->
 	<environments default="development">
 		<environment id="development">
@@ -20,7 +23,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<!-- 定义映射器 -->
 	<mappers>
-		<mapper resource="com/gethin/mapper/RoleMapper.xml" />
-		<mapper class="com.gethin.mapper.RoleMapper1"/>
+		<package name="com.gethin.mapper"/>
 	</mappers>
 </configuration>

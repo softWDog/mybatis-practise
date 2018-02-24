@@ -2,15 +2,21 @@ package com.gethin.test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.apache.tools.ant.types.resources.selectors.Date;
 
 import com.gethin.mapper.RoleMapper;
 import com.gethin.mapper.RoleMapper1;
+import com.gethin.mapper.UserMapper;
 import com.gethin.po.Role;
+import com.gethin.po.Sex;
+import com.gethin.po.User;
 
 
 public class Main {
@@ -28,15 +34,36 @@ public class Main {
 		SqlSession sqlSession=null;
 		try {
 			sqlSession=sqlSessionFactory.openSession();
-			RoleMapper1 roleMapper1=sqlSession.getMapper(RoleMapper1.class);
-			RoleMapper roleMapper=sqlSession.getMapper(RoleMapper.class);
-			Role role=roleMapper.getRole(1L);
-			System.out.println(role.getId()+":"+role.getRoleName()+":"+role.getNote());
-			Role role1=new Role();
-			role1.setRoleName("sinan");
-			role1.setNote("insert mapper class test");
-			roleMapper.insertRole(role1);
+//			RoleMapper roleMapper=sqlSession.getMapper(RoleMapper.class);
+//			Role role=roleMapper.getRole(1L);
+//			System.out.println(role.getId()+":"+role.getRoleName()+":"+role.getNote());
+//			RoleMapper1 roleMapper1=sqlSession.getMapper(RoleMapper1.class);
+//			Role role1=new Role();
+//			role1.setRoleName("sinan");
+//			role1.setNote("insert mapper class test");
+//			roleMapper.insertRole(role1);
+//			Role role2= roleMapper.findRole("sinan");
+//			System.out.println(role2.getId()+":"+role2.getRoleName());
+			UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+			User user=new User();
+			user.setUserName("zhangsan3");
+			user.setCnname("张三");
+			user.setMobile("13973150133");
+			user.setEmail("326736765@qq.com");
+			user.setSex(Sex.MALE);
+			user.setNote("测试");
+			user.setBirthday("19920301");
+			userMapper.insertUser(user);
+			System.out.println(user.getId()+":"+user.getUserName()+":"+user.getSex());
+//			User user1=userMapper.getUser(1L);
+//			System.out.println(user1.getUserName()+":"+user1.getSex());
+//			Map<String, String> params=new HashMap<>();
+//			params.put("name", "zhangsan1");
+//			User user2=userMapper.getUserByMap(params);
+//			System.out.println("user:"+user2.getUserName()+":"+user2.getSex());
+			
 			sqlSession.commit();
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			sqlSession.rollback();
