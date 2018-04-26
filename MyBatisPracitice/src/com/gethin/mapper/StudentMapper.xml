@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gethin.mapper.StudentMapper">
+	<resultMap type="com.gethin.po.Student" id="studentMap">
+		<id column="id" property="id"/>
+		<result column="cnname" property="cnname"/>
+		<result column="sex" property="sex"
+			typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+		<result column="note" property="note"/>
+		<association property="studentSelfcard" column="id" select="com.gethin.mapper.StudentSelfcardMapper.findStudentSelfcardByStudentId"/>
+		<collection property="studentLectureList" column="id" select="com.gethin.mapper.StudentLectureMapper.findStudentLectureByStuId" />
+	</resultMap>
+	<select id="getStudent" parameterType="int" resultMap="studentMap">
+		select id,cnname,sex,note from t_student where id=#{id}
+	</select>
+</mapper>

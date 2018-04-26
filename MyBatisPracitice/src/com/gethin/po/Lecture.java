@@ -1,28 +1,24 @@
 package com.gethin.po;
 
-/*
- * @author gethin
- * 角色的实体类
- */
-public class Role {
-    private long id;
-    private String roleName;
+public class Lecture {
+    private Integer id;
+    private String lectureName;
     private String note;
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getLectureName() {
+        return lectureName;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setLectureName(String lectureName) {
+        this.lectureName = lectureName;
     }
 
     public String getNote() {
@@ -35,9 +31,9 @@ public class Role {
 
     @Override
     public String toString() {
-        return "Role{" +
+        return "Lecture{" +
                 "id=" + id +
-                ", roleName='" + roleName + '\'' +
+                ", lectureName='" + lectureName + '\'' +
                 ", note='" + note + '\'' +
                 '}';
     }

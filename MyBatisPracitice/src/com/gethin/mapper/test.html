@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>
+            属性名称
+        </th>
+        <th>
+            描述
+        </th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>它是和Mapper接口组合起来的，提供给MyBatis调用的</td>
+    </tr>
+    <tr>
+        <td>parameterType</td>
+        <td>传递给sql的参数类型，可以使用类的全类名或者别名</td>
+    </tr>
+    <tr>
+        <td>fulshCache</td>
+        <td>它的作用是调用SQL之后，是否要求MyBatis清空之前的缓存</td>
+    </tr>
+    <tr>
+        <td>useGeneratedKeys</td>
+        <td>是否自增主键</td>
+    </tr>
+    <tr>
+        <td>keyProperty</td>
+        <td>表示哪个列作为属性的主键。不能和keyColumn同时使用，只接受整形参数</td>
+    </tr>
+    <tr>
+        <td>keyColumn</td>
+        <td>指明第几个列是主键，不能和keyProperty同时使用</td>
+    </tr>
+</table>
+
+</body>
+</html>
